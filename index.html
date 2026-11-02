@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chaos?</title>
+<style>
+  :root{
+    --bg:#0a0b10; --fg:#c8d1e2; --dim:#5c6884; --acc:#7ee787; --warn:#e6b450;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:Consolas,"Cascadia Mono","Microsoft YaHei",monospace;
+    font-size:15px;line-height:1.9}
+  #wrap{max-width:860px;margin:0 auto;padding:56px 24px 120px}
+  header{border-bottom:1px solid rgba(120,150,190,.25);padding-bottom:14px;margin-bottom:28px;
+    display:flex;justify-content:space-between;align-items:baseline;
+    letter-spacing:.18em;font-size:13px;color:var(--dim)}
+  header b{color:var(--fg);font-weight:400}
+  .meta{font-size:13px;color:var(--dim);letter-spacing:.1em;margin-bottom:24px}
+  .meta em{color:var(--acc);font-style:normal}
+  pre#data{
+    background:#0e1018;border:1px solid rgba(120,150,190,.2);
+    padding:22px 24px;margin:0 0 22px;overflow-x:auto;font-size:13.5px;
+    line-height:2.1;color:#9fb0cc;user-select:text
+  }
+  pre#data .k{color:#5c6884}
+  pre#data .v{color:#dbe4f2}
+  .note{color:var(--dim);font-size:13px;letter-spacing:.05em}
+  .note span{border-bottom:1px dashed rgba(126,231,135,.45);cursor:help}
+  #extra{display:none;margin-top:34px;padding:18px 20px;
+    border-left:2px solid var(--acc);color:var(--acc);font-size:13px;letter-spacing:.08em}
+  #narrow{display:none;color:var(--warn);font-size:13px;margin-top:26px;letter-spacing:.08em}
+  footer{margin-top:60px;padding-top:16px;border-top:1px solid rgba(120,150,190,.18);
+    font-size:12px;color:#3f485d;letter-spacing:.16em;display:flex;justify-content:space-between}
+  @media (max-width:760px){ #narrow{display:block} }
+</style>
+</head>
+<body>
+<div id="wrap">
+
+  <header><span><b>0LOSS</b> ARCHIVE</span><span>RETRIEVAL 0M-?</span></header>
+
+  <div class="meta">STATUS: PARTIAL　·　7 / 7 SEGMENTS LOADED　·　<em>INTEGRITY 61%</em></div>
+
+  <pre id="data"><span class="k">01</span>  <span class="v">4B 7E 2A 91 C0 5D 3F 88</span>
+<span class="k">02</span>  <span class="v">9C 11 F4 6B 2E 70 A3 55</span>
+<span class="k">03</span>  <span class="v">D2 08 7A 1C E9 44 6F B3</span>
+<span class="k">04</span>  <span class="v">3A F1 5C 97 0B 6E D4 22</span>
+<span class="k">05</span>  <span class="v">71 8E CB 05 4A D9 2F 6C</span>
+<span class="k">06</span>  <span class="v">DTISYMBAWQGQMBBURFDS</span>
+<span class="k">07</span>  <span class="v">E0 9B 34 7D 12 C6 58 AF</span></pre>
+
+  <p class="note">复制这段数据，粘到别处看看。<span title="You already know the name.">你会发现少了一点什么。</span></p>
+
+  <div id="extra">Chaocipher needs two alphabets. This page only has one.</div>
+  <div id="narrow">窄屏专用：SEGMENT 06 IS THE ONLY ONE IN ASCII.</div>
+
+  <footer><span>© 0LOSS RHYTHM ARCHIVE</span><span>PHASE 03</span></footer>
+</div>
+
+<!-- 提示：不是所有行都是数据。第 06 行只用了大写字母。 -->
+
+<script>
+(function(){
+  // 复制时，在末尾偷偷加一句
+  var data = document.getElementById('data');
+  data.addEventListener('copy', function(e){
+    var sel = window.getSelection().toString();
+    if(!sel) return;
+    e.clipboardData.setData('text/plain', sel + "\n\nrow 6? 3?");
+    e.preventDefault();
+  });
+
+  // 地址栏加 #chaos 才会出现的那一块
+  if(location.hash === '#chaos'){
+    document.getElementById('extra').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
